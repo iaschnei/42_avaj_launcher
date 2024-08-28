@@ -23,4 +23,23 @@ public class Coordinates {
   public int getHeight() {
     return (height);
   }
+
+  public int setLongitude(int newLongitude) {
+    longitude = newLongitude;
+    return (longitude);
+  }
+
+  public int setLatitude(int newLatitude) {
+    latitude = newLatitude;
+    return (latitude);
+  }
+
+  public int setHeight(int newHeight) {
+    if (newHeight > 100)
+      newHeight = 100;
+    if (newHeight < 0)
+      newHeight = 0;
+    height = newHeight;
+    return (height);
+  }
 }
