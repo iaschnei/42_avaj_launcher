@@ -15,8 +15,11 @@ public class Aircraft extends Flyable {
     this.coordinates = p_coordinates;
   }
 
+  public String getName() { return this.name; }
+
   @Override
-  public void updateConditions() throws NoTowerException, UnregisteredException {
+  public void updateConditions()
+      throws NoTowerException, UnregisteredException {
     throw new UnsupportedOperationException(
         "Unimplemented method 'updateConditions'");
   }

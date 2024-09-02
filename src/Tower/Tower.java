@@ -1,11 +1,13 @@
 package Tower;
 
 import Flyable.Flyable;
+import Flyable.NoTowerException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tower {
 
-  private List<Flyable> observers;
+  private List<Flyable> observers = new ArrayList<Flyable>();
 
   public void register(Flyable p_flyable) throws AlreadyRegisteredException {
 
@@ -16,7 +18,9 @@ public class Tower {
 
     observers.add(p_flyable);
 
-    // TODO add a message using the flyable's name
+    p_flyable.registerTower((WeatherTower)this);
+
+    System.out.println(p_flyable.getName() + " is registered to the tower.");
   }
 
   public void unregister(Flyable p_flyable) throws UnregisteredException {
@@ -27,12 +31,20 @@ public class Tower {
     }
 
     observers.remove(p_flyable);
+
+    p_flyable.registerTower(null);
+
+    System.out.println(p_flyable.getName() +
+                       " has been unregistered from the tower.");
   }
 
-  protected void conditionChanged() {
+  protected void conditionChanged()
+      throws NoTowerException, UnregisteredException {
+
+    for (int i = 0; i < observers.size(); i++) {
+      observers.get(i).updateConditions();
+    }
   }
 
-  protected List<Flyable> getObservers() {
-    return (this.observers);
-  }
+  protected List<Flyable> getObservers() { return (this.observers); }
 }

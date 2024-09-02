@@ -12,34 +12,21 @@ public class Coordinates {
     this.height = p_height;
   }
 
-  public int getLongitude() {
-    return (longitude);
-  }
+  public int getLongitude() { return (longitude); }
 
-  public int getLatitude() {
-    return (latitude);
-  }
+  public int getLatitude() { return (latitude); }
 
-  public int getHeight() {
-    return (height);
-  }
+  public int getHeight() { return (height); }
 
-  public int setLongitude(int newLongitude) {
-    longitude = newLongitude;
-    return (longitude);
-  }
+  public void setLongitude(int newLongitude) { longitude = newLongitude; }
 
-  public int setLatitude(int newLatitude) {
-    latitude = newLatitude;
-    return (latitude);
-  }
+  public void setLatitude(int newLatitude) { latitude = newLatitude; }
 
-  public int setHeight(int newHeight) {
+  public void setHeight(int newHeight) {
     if (newHeight > 100)
       newHeight = 100;
     if (newHeight < 0)
       newHeight = 0;
     height = newHeight;
-    return (height);
   }
 }
