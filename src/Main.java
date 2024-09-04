@@ -1,16 +1,18 @@
 import Flyable.AircraftFactory;
 import Flyable.Helicopter;
-import Flyable.NoTowerException;
-import Flyable.UnknownFlyableException;
-import Tower.UnregisteredException;
 import Tower.WeatherTower;
 
 public class Main {
 
   public static void main(String[] args)
-      throws UnknownFlyableException, NoTowerException, UnregisteredException {
+      throws Exception {
 
     try {
+
+      if (args.length != 2) {
+        System.out.println("Please input a scenario .txt file");
+      }
+
       WeatherTower tower = new WeatherTower();
       AircraftFactory factory = AircraftFactory.getInstance();
 
