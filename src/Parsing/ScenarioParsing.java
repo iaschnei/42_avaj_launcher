@@ -54,7 +54,7 @@ public class ScenarioParsing {
     return (ret);
   }
 
-  private static int atoi(String str) throws ScenarioFormatException {
+  public static int atoi(String str) throws ScenarioFormatException {
 
     int result = 0;
     for (int i = 0; i < str.length(); i++) {
