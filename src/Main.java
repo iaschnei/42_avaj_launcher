@@ -10,12 +10,12 @@ public class Main {
 
     try {
 
-      if (args.length != 2) {
+      if (args.length != 1) {
         System.out.println("Please input a scenario .txt file");
         return;
       }
 
-      String scenarioStr = FileToString.ReadFileToString(args[1]);
+      String scenarioStr = FileToString.ReadFileToString(args[0]);
       ArrayList<String> scenario = FileToString.StringToList(scenarioStr);
 
       int scenarioSize = ScenarioParsing.getSimulationSize(scenario);
@@ -33,6 +33,8 @@ public class Main {
                 ScenarioParsing.atoi(aircraftData[3]),
                 ScenarioParsing.atoi(aircraftData[4])));
       }
+
+      System.out.println(scenarioSize);
 
       for (int j = 0; j < scenarioSize; j++) {
 

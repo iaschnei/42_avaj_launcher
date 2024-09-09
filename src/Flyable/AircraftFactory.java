@@ -22,7 +22,7 @@ public final class AircraftFactory {
     Coordinates p_coordinates = new Coordinates(lon, lat, hei);
 
     switch (p_type) {
-    case "Balloon":
+    case "Baloon":
       aircraft_id++;
       return (new Balloon(aircraft_id, p_name, p_coordinates));
 

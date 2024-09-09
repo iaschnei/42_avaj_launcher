@@ -52,11 +52,11 @@ public class JetPlane extends Aircraft {
     case "SNOW":
       this.coordinates.setHeight(this.coordinates.getHeight() - 7);
       if (this.coordinates.getHeight() == 0) {
-        this.weatherTower.unregister(this);
         System.out.println(this.name + "(" + this.id +
                            ") : Landing at coordinates : " +
                            this.coordinates.getLongitude() + "/" +
                            this.coordinates.getLatitude());
+        this.weatherTower.unregister(this);
         return;
       }
       if (this.current_weather != weather) {

@@ -28,12 +28,14 @@ public class ScenarioParsing {
 
     if (ret.length != 5) {
       throw new ScenarioFormatException(
-          "Error on aircraft line, incorrect format");
+          "Error on aircraft line, missing informations, expected format is "
+              + ": AircraftType Name Longitude Latitude Height");
     }
 
-    if (ret[0] != "Helicopter" && ret[0] != "Baloon" && ret[0] != "JetPlane") {
+    if (!ret[0].equals("Helicopter") && !ret[0].equals("Baloon") &&
+        !ret[0].equals("JetPlane")) {
       throw new ScenarioFormatException(
-          "Error on aircraft line, incorrect format");
+          "Error on aircraft line, unknown AircraftType");
     }
 
     String regex = "[0-9]+";
@@ -42,13 +44,18 @@ public class ScenarioParsing {
         ret[4].matches(regex) == false) {
 
       throw new ScenarioFormatException(
-          "Error on aircraft line, incorrect format");
+          "Error on aircraft line, coordinates must be numbers only");
     }
-    
-    if (atoi(ret[2]) > 100 || atoi(ret[3]) > 100 || atoi(ret[4]) > 100) {
+
+    if (atoi(ret[4]) > 100) {
+
+      ret[4] = "100";
+    }
+    if (atoi(ret[4]) == 0) {
 
       throw new ScenarioFormatException(
-          "Error on aircraft line, coordinates are too big");
+          "Error on aircraft line, aircraft can't register from the ground " +
+              "(height is 0)");
     }
 
     return (ret);
@@ -58,7 +65,7 @@ public class ScenarioParsing {
 
     int result = 0;
     for (int i = 0; i < str.length(); i++) {
-      char digit = (char)(str.charAt(i) - '0');
+      char digit = (char) (str.charAt(i) - '0');
       result += (digit * Math.pow(10, (str.length() - i - 1)));
     }
 
